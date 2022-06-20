@@ -60,7 +60,7 @@ const BlogDetail: NextPageWithLayout = ({
           </div>
 
           <div className={styles.sidebar_list}>
-            <FSidebar categories={categories} />
+            <FSidebar categories={categories} blog={blog} blogs={blogs} />
           </div>
         </div>
 

@@ -48,9 +48,11 @@
 
 .tags_list {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   padding: 0.5rem 0;
+  row-gap: 0.3rem;
+  column-gap: 0.3rem;
 }
 
 .tags_list > span {

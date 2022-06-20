@@ -9,9 +9,11 @@ interface CategoryWithBlog extends ICategory {
 
 export interface IFSidebarProps {
   categories: CategoryWithBlog[]
+  blogs?: IBlog[]
+  blog?: IBlog
 }
 
-const FSidebar: React.FC<IFSidebarProps> = ({ categories }) => {
+const FSidebar: React.FC<IFSidebarProps> = ({ categories, blogs, blog }) => {
   return (
     <div className={styles.container}>
       <input
@@ -35,15 +37,15 @@ const FSidebar: React.FC<IFSidebarProps> = ({ categories }) => {
       <section className={styles.recent_post}>
         <h3>Recent Post</h3>
         <ul className={styles.recent_post_list}>
-          {[1, 2, 3, 4].map((item) => (
-            <li key={item}>
+          {blogs?.map((blog) => (
+            <li key={blog._id}>
               <img
-                src="/default.png"
+                src={blog.image ?? '/default.png'}
                 className={styles.recent_post_image}
                 alt="Blog Image"
               />
               <span className={styles.recent_post_list_item_info}>
-                <b>Lorem ipsum dolor, sit amet consectetur.</b>
+                <b>{blog.description?.substring(0, 50)}</b>
                 <small>8 hours ago</small>
               </span>
             </li>
@@ -51,14 +53,31 @@ const FSidebar: React.FC<IFSidebarProps> = ({ categories }) => {
         </ul>
       </section>
 
-      <section className={styles.tags}>
-        <h3>Tag</h3>
-        <div className={styles.tags_list}>
-          <span>Tag1</span>
-          <span>Tag2</span>
-          <span>Tag3 is the most</span>
-        </div>
-      </section>
+      {blogs && (
+        <section className={styles.tags}>
+          <h3>Tag</h3>
+          <div className={styles.tags_list}>
+            {blogs.map((blog) =>
+              blog?.tags
+                ?.split(',')
+                .map((tag, index) => (
+                  <span key={`${blog._id} + ${index}`}>{tag}</span>
+                )),
+            )}
+          </div>
+        </section>
+      )}
+
+      {blog && (
+        <section className={styles.tags}>
+          <h3>Tag</h3>
+          <div className={styles.tags_list}>
+            {blog?.tags?.split(',').map((tag, index) => (
+              <span key={`${blog._id} + ${index}`}>{tag}</span>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className={styles.subscribe_container}>
         <h2>Subscribe to KBZ Money Alerts</h2>
