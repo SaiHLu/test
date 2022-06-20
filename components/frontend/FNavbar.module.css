@@ -19,8 +19,8 @@
 
 .navbar_menu {
   display: flex;
-  justify-content: flex-start;
-  width: 30%;
+  justify-content: flex-end;
+  width: 20%;
 }
 
 .navbar_menu_item {
@@ -60,7 +60,7 @@
 }
 
 .navbar_search_container {
-  width: 40%;
+  width: 50%;
 }
 
 .navbar_search {
@@ -89,10 +89,10 @@
   }
 
   .navbar_menu {
-    width: 40%;
+    width: 30%;
   }
 
   .navbar_search_container {
-    width: 40%;
+    width: 50%;
   }
 }
