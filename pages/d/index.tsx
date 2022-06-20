@@ -43,7 +43,7 @@ function BlogIndex({
     const operation = target.getAttribute('data-nav-operation')
     const offset = operation === 'next' ? 1 : -1
     const page = currentPage + offset
-    router.push(`/d/category?page=${page}`)
+    router.push(`/d/blogs?page=${page}`)
   }
 
   const handleDeleteBlog = async (id: string) => {
