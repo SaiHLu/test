@@ -38,7 +38,7 @@ const BlogIndex: NextPageWithLayout = ({
           </section>
 
           <div className={styles.sidebar_list}>
-            <FSidebar categories={categories} blogs={blogs} />
+            <FSidebar categories={categories} blogs={blogs.slice(0, 4)} />
           </div>
         </div>
         <Question />

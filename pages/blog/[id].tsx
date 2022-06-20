@@ -50,9 +50,13 @@ const BlogDetail: NextPageWithLayout = ({
 
             <div className={styles.blog_image_section}>
               <img
-                src={blog.image ?? '/default.png'}
+                src={blog.image}
                 className={styles.blog_image}
                 alt="Blog Image"
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null
+                  currentTarget.src = '/default.png'
+                }}
               />
             </div>
 
@@ -123,7 +127,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       blog,
-      blogs: blogs.slice(0, 3),
+      blogs: blogs.slice(0, 4),
       categories: categories.slice(0, 3),
     },
   }

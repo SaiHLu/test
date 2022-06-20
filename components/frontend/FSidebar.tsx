@@ -40,9 +40,13 @@ const FSidebar: React.FC<IFSidebarProps> = ({ categories, blogs, blog }) => {
           {blogs?.map((blog) => (
             <li key={blog._id}>
               <img
-                src={blog.image ?? '/default.png'}
+                src={blog.image}
                 className={styles.recent_post_image}
                 alt="Blog Image"
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null
+                  currentTarget.src = '/default.png'
+                }}
               />
               <span className={styles.recent_post_list_item_info}>
                 <b>{blog.description?.substring(0, 50)}</b>

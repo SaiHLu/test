@@ -24,9 +24,13 @@ const BlogCard: React.FC<IBlogCard> = ({
   return (
     <div className={styles.card} {...rest}>
       <img
-        src={imageUrl ?? '/default.png'}
+        src={imageUrl}
         alt="Avatar"
         className={styles.blog_image}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null
+          currentTarget.src = '/default.png'
+        }}
       />
       <div className={styles.container}>
         <h4>
