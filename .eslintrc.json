@@ -1,13 +1,12 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "@remix-run/eslint-config",
     "prettier"
   ],
   "plugins": [
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "warn",
-  },
+    "prettier/prettier": "warn"
+  }
 }

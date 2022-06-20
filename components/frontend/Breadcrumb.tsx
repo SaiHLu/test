@@ -3,7 +3,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import styles from './Breadcrumb.module.css'
 
 export interface IBreadcrumbProps {
-  title?: string;
+  title?: string
 }
 
 const Breadcrumb: React.FC<IBreadcrumbProps> = ({ title }) => {

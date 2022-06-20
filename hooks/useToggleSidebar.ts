@@ -1,28 +1,25 @@
-import { SidebarContext } from "context/SidebarContext";
-import React from "react";
+import { SidebarContext } from 'context/SidebarContext'
+import React from 'react'
 
 export function useToggleSidebar() {
-  const {isOpen, setIsOpen} = React.useContext(SidebarContext)
+  const { isOpen, setIsOpen } = React.useContext(SidebarContext)
 
-  function open()
-  {
+  function open() {
     setIsOpen(true)
   }
 
-  function close()
-  {
+  function close() {
     setIsOpen(false)
   }
 
-  function toggle()
-  {
+  function toggle() {
     setIsOpen(!isOpen)
   }
 
   return {
     isOpen,
-    open, 
-    close, 
-    toggle
+    open,
+    close,
+    toggle,
   }
 }

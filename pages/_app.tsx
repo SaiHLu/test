@@ -10,35 +10,43 @@ import BlogLayout from 'layouts/BlogLayout'
 import 'styles/globals.css'
 
 type NextPageWithLayout = NextPage & {
-  guestLayout: boolean;
-  homeLayout: boolean;
-  blogLayout: boolean;
+  guestLayout: boolean
+  homeLayout: boolean
+  blogLayout: boolean
 }
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
+  Component: NextPageWithLayout
 }
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  if (Component.homeLayout) return (<HomeLayout><Component {...pageProps} /></HomeLayout>)
+  if (Component.homeLayout)
+    return (
+      <HomeLayout>
+        <Component {...pageProps} />
+      </HomeLayout>
+    )
 
-  if (Component.blogLayout) return (<BlogLayout>
-    <Component {...pageProps} />
-  </BlogLayout>)
+  if (Component.blogLayout)
+    return (
+      <BlogLayout>
+        <Component {...pageProps} />
+      </BlogLayout>
+    )
 
   return (
     <ChakraProvider>
-      {Component.guestLayout ?
-        (<GuestLayout>
+      {Component.guestLayout ? (
+        <GuestLayout>
           <Component {...pageProps} />
-        </GuestLayout>) :
-        (
-          <SidebarContextProvider>
-            <AuthLayout>
-              <Component {...pageProps} />
-            </AuthLayout>
-          </SidebarContextProvider>
-        )}
+        </GuestLayout>
+      ) : (
+        <SidebarContextProvider>
+          <AuthLayout>
+            <Component {...pageProps} />
+          </AuthLayout>
+        </SidebarContextProvider>
+      )}
     </ChakraProvider>
   )
 }

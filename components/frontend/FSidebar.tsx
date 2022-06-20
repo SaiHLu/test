@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './FSidebar.module.css'
 
 interface CategoryWithBlog extends ICategory {
-  blogs: IBlog[],
+  blogs: IBlog[]
 }
 
 export interface IFSidebarProps {
@@ -14,36 +14,40 @@ export interface IFSidebarProps {
 const FSidebar: React.FC<IFSidebarProps> = ({ categories }) => {
   return (
     <div className={styles.container}>
-      <input type='search' placeholder='Search here' className={styles.search_input} />
+      <input
+        type="search"
+        placeholder="Search here"
+        className={styles.search_input}
+      />
 
       <section className={styles.categories}>
         <h3>Categories</h3>
         <ul className={styles.categories_list}>
-          {
-            categories.map(category => (
-              <li key={category._id}>
-                <span>{category.name}</span>
-                <span>{category.blogs.length}</span>
-              </li>
-            ))
-          }
+          {categories.map((category) => (
+            <li key={category._id}>
+              <span>{category.name}</span>
+              <span>{category.blogs.length}</span>
+            </li>
+          ))}
         </ul>
       </section>
 
       <section className={styles.recent_post}>
         <h3>Recent Post</h3>
         <ul className={styles.recent_post_list}>
-          {
-            [1, 2, 3, 4].map((item) => (
-              <li key={item}>
-                <img src="/default.png" className={styles.recent_post_image} alt="Blog Image" />
-                <span className={styles.recent_post_list_item_info}>
-                  <b>Lorem ipsum dolor, sit amet consectetur.</b>
-                  <small>8 hours ago</small>
-                </span>
-              </li>
-            ))
-          }
+          {[1, 2, 3, 4].map((item) => (
+            <li key={item}>
+              <img
+                src="/default.png"
+                className={styles.recent_post_image}
+                alt="Blog Image"
+              />
+              <span className={styles.recent_post_list_item_info}>
+                <b>Lorem ipsum dolor, sit amet consectetur.</b>
+                <small>8 hours ago</small>
+              </span>
+            </li>
+          ))}
         </ul>
       </section>
 
@@ -59,11 +63,14 @@ const FSidebar: React.FC<IFSidebarProps> = ({ categories }) => {
       <section className={styles.subscribe_container}>
         <h2>Subscribe to KBZ Money Alerts</h2>
 
-        <input type='email' placeholder='Email Address' className={styles.subscribe_input} />
+        <input
+          type="email"
+          placeholder="Email Address"
+          className={styles.subscribe_input}
+        />
 
         <button className={styles.subscribe_btn}>Subscribe Now</button>
       </section>
-
     </div>
   )
 }

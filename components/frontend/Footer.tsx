@@ -1,5 +1,11 @@
 import React from 'react'
-import { FaFacebook, FaInstagram, FaLinkedin, FaLocationArrow, FaTwitter } from 'react-icons/fa'
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaLocationArrow,
+  FaTwitter,
+} from 'react-icons/fa'
 
 import styles from './Footer.module.css'
 
@@ -13,7 +19,9 @@ const Footer = () => {
             <ul className={styles.kbz_section_list}>
               <li className={styles.kbz_section_list_item}>
                 <FaLocationArrow size={20} style={{ marginRight: '1rem' }} />
-                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
+                <span>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                </span>
               </li>
               <li>
                 <FaLocationArrow size={20} style={{ marginRight: '1rem' }} />
@@ -68,10 +76,7 @@ const Footer = () => {
             <FaTwitter size={20} style={{ marginRight: '1rem' }} />
           </p>
         </div>
-
       </div>
-
-
     </div>
   )
 }

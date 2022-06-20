@@ -5,9 +5,8 @@ import { connectDB } from 'utils/connectDB'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
-  
   try {
     await connectDB()
 
@@ -15,8 +14,8 @@ export default async function handler(
 
     const blogs = await getAllBlogs(page)
 
-     res.json(blogs)
-  } catch(error: any) {
-    res.json({error: error.message})
+    res.json(blogs)
+  } catch (error: any) {
+    res.json({ error: error.message })
   }
 }
