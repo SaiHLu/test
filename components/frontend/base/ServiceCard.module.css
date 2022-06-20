@@ -1,0 +1,27 @@
+.card {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  width: 32%;
+  box-shadow: 2px 2px 2px 2px #ccc;
+}
+
+.card:hover {
+  border: 1px solid blue;
+  cursor: pointer;
+}
+
+.card > p {
+  font-weight: 300;
+}
+
+.icon_size {
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}

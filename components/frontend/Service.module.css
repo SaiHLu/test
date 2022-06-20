@@ -1,0 +1,37 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem 0 6rem 0;
+}
+
+.service_info {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.service_info > h3 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.service_info > p {
+  font-size: 0.8rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service_section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .service_info > p {
+    width: 100%;
+  }
+}
