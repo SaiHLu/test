@@ -51,12 +51,15 @@ function BlogIndex({
 
     if (confirmation) {
       try {
-        const response = await fetch(`/api/blog/${id}/delete`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/blog/${id}/delete`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
           },
-        })
+        )
 
         const result = await response.json()
 

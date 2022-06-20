@@ -43,13 +43,16 @@ const CreateBlog = ({
 
   const handleCreateBlog = async (data: IFormInputs) => {
     try {
-      const response = await fetch('/api/blog/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/blog/create`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      })
+      )
 
       const result = await response.json()
 

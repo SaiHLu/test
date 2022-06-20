@@ -33,13 +33,16 @@ const CreateCategory = () => {
 
   const handleCreateCategory = async (data: createCategoryType) => {
     try {
-      const response = await fetch('/api/category/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/category/create`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      })
+      )
 
       const result = await response.json()
 

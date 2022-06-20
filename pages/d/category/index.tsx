@@ -48,12 +48,15 @@ function CategoryIndex({
 
     if (confirmation) {
       try {
-        const response = await fetch(`/api/category/${id}/delete`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/category/${id}/delete`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
           },
-        })
+        )
 
         const result = await response.json()
 

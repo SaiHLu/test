@@ -39,13 +39,16 @@ function EditCategory({
 
   const handleUpdateCategory = async (data: IFormInputs) => {
     try {
-      const response = await fetch(`/api/category/${category._id}/update`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/category/${category._id}/update`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      })
+      )
 
       const result = await response.json()
 
