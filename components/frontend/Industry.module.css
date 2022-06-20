@@ -1,0 +1,38 @@
+.wrapper {
+  width: 100%;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  column-gap: 3rem;
+  padding: 4rem 0;
+}
+
+.industry_image {
+  width: 500px;
+}
+
+.industry_description > h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.industry_description > p {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .industry_image {
+    width: 100%;
+  }
+}

@@ -1,0 +1,41 @@
+.wrapper {
+  width: 100%;
+  background-color: hsl(236, 89%, 59%);
+  color: #fff;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  column-gap: 3rem;
+  padding: 4rem 0;
+}
+
+.our_solution_image {
+  width: 500px;
+}
+
+.our_solution_description > h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.our_solution_description > p {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .our_solution_image {
+    width: 100%;
+  }
+}

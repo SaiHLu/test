@@ -18,7 +18,7 @@ export default async function handler(
 
       res.setHeader('Set-Cookie', serializeCookie)
 
-      res.json({ message: 'Logout' })
+      return res.json({ message: 'Logout' })
     } catch (error: any) {
       console.log('Logout Error: ', error)
       res.json({ error: error.message })

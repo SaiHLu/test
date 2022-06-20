@@ -9,9 +9,11 @@ const FNavbar = () => {
   return (
     <div className={styles.container}>
       <nav className={styles.navbar}>
-        <p className={styles.navbar_logo}>Logo</p>
+        <Link href="/" className={styles.navbar_logo}>
+          <a>KBZ Logo</a>
+        </Link>
         <ul className={styles.navbar_menu}>
-          <li className={`${styles.navbar_menu_item} ${styles.active}`}>
+          <li className={`${styles.navbar_menu_item}`}>
             <Link href="/">
               <a>Home</a>
             </Link>

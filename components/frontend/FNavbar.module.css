@@ -10,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 1.5rem 0;
 }
 
 .navbar_logo {
@@ -80,4 +81,18 @@
 
 .navbar_search_icon:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar_logo {
+    width: 20%;
+  }
+
+  .navbar_menu {
+    width: 40%;
+  }
+
+  .navbar_search_container {
+    width: 40%;
+  }
 }
