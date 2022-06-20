@@ -1,10 +1,12 @@
-import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input, VStack, Box } from '@chakra-ui/react';
+import { Button, FormControl, FormErrorMessage, FormLabel, Input, VStack, Box } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import PageBreadcrumb from 'components/dashboard/PageBreadcrumb';
+import { verify } from 'jsonwebtoken';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { JWT_SECRET } from 'utils/cookie';
 import { updateCategoryValidation } from 'validations/categoryValidations';
 import { ICategory } from '..';
 
@@ -62,6 +64,29 @@ function EditCategory({ category }: InferGetServerSidePropsType<typeof getServer
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const myJwt = context.req.cookies.myJwt
+
+  if (!myJwt) {
+    return {
+      redirect: {
+        destination: '/auth/login',
+        permanent: false
+      }
+    }
+  }
+
+  if (myJwt) {
+    try {
+      verify(myJwt, JWT_SECRET)
+    } catch (error) {
+      return {
+        redirect: {
+          destination: '/auth/login',
+          permanent: false
+        }
+      }
+    }
+  }
   const id = context.params?.id
   const response = await fetch(`${process.env.API_URL}/api/category/${id}`, {
     method: 'GET',

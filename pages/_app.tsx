@@ -4,10 +4,15 @@ import type { AppProps } from 'next/app'
 import AuthLayout from 'layouts/AuthLayout'
 import GuestLayout from 'layouts/GuestLayout'
 import { SidebarContextProvider } from 'context/SidebarContext'
+import HomeLayout from 'layouts/HomeLayout'
+import BlogLayout from 'layouts/BlogLayout'
+
+import 'styles/globals.css'
 
 type NextPageWithLayout = NextPage & {
   guestLayout: boolean;
-  frontendLayout: boolean;
+  homeLayout: boolean;
+  blogLayout: boolean;
 }
 
 type AppPropsWithLayout = AppProps & {
@@ -15,7 +20,11 @@ type AppPropsWithLayout = AppProps & {
 }
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  if (Component.frontendLayout && !Component.guestLayout) return (<Component {...pageProps} />)
+  if (Component.homeLayout) return (<HomeLayout><Component {...pageProps} /></HomeLayout>)
+
+  if (Component.blogLayout) return (<BlogLayout>
+    <Component {...pageProps} />
+  </BlogLayout>)
 
   return (
     <ChakraProvider>

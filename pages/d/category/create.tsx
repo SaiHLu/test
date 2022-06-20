@@ -58,11 +58,24 @@ const CreateCategory = () => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const myJwt = context.req.cookies.myJwt
 
-  if (!myJwt || !verify(myJwt, JWT_SECRET)) {
+  if (!myJwt) {
     return {
       redirect: {
         destination: '/auth/login',
         permanent: false
+      }
+    }
+  }
+
+  if (myJwt) {
+    try {
+      verify(myJwt, JWT_SECRET)
+    } catch (error) {
+      return {
+        redirect: {
+          destination: '/auth/login',
+          permanent: false
+        }
       }
     }
   }

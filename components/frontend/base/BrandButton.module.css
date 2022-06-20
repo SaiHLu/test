@@ -1,0 +1,10 @@
+.brand_button {
+  border-radius: 1rem;
+  padding: 0.5rem 0.5rem;
+  border: none;
+}
+
+.brand_button_content {
+  display: flex;
+  justify-content: center;
+}

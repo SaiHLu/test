@@ -1,3 +1,8 @@
+:root {
+  --blue: skyblue;
+  --dark-blue: #00008b;
+}
+
 html,
 body {
   padding: 0;
@@ -9,6 +14,15 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
 }
 
 * {

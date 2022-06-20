@@ -1,14 +1,15 @@
+import HeroSection from "components/frontend/HeroSection";
+import { NextPageWithLayout } from "./page";
 
-export interface IHome {
-  frontendLayout: boolean;
-}
 
-const Home = () => {
+const Home: NextPageWithLayout = () => {
   return (
-    <h1>Frontend Page</h1>
+    <div>
+      <HeroSection />
+    </div>
   )
 }
 
-Home.frontendLayout = true;
+Home.homeLayout = true;
 
 export default Home

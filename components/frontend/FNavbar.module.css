@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar_logo {
+  width: 20%;
+}
+
+.navbar_menu {
+  display: flex;
+  justify-content: flex-end;
+  width: 30%;
+}
+
+.navbar_menu_item {
+  position: relative;
+  display: block;
+  padding: 16px 0;
+  margin: 0 12px;
+  letter-spacing: 1px;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  transition: color 0.1s, background-color 0.1s, padding 0.2s ease-in;
+}
+
+.navbar_menu_item::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #000;
+  transform-origin: right top;
+  transform: scale(0, 1);
+  transition: color 0.1s, transform 0.2s ease-out;
+}
+
+.navbar_menu_item:active::before {
+  background-color: #000;
+}
+
+.navbar_menu_item:hover::before,
+.navbar_menu_item:focus::before {
+  transform-origin: left top;
+  transform: scale(1, 1);
+}
+
+.navbar_search_container {
+  width: 50%;
+}
+
+.navbar_search {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar_search_input {
+  border: 1px solid #ccc;
+  outline: none;
+  width: 90%;
+  box-shadow: 2px 1px 2px #888888;
+  padding: 0.5rem 0.1rem;
+  margin-right: 0.2rem;
+}
+
+.navbar_search_icon:hover {
+  cursor: pointer;
+}
