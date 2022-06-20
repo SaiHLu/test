@@ -24,8 +24,14 @@ const FNavbar = () => {
         </ul>
         <div className={styles.navbar_search_container}>
           <div className={styles.navbar_search}>
-            {openSearchInput && (<input type='text' className={styles.navbar_search_input} />)}
-            <FaSearch size={20} className={styles.navbar_search_icon} onClick={() => setOpenSearchInput(!openSearchInput)} />
+            {openSearchInput && (
+              <input type="text" className={styles.navbar_search_input} />
+            )}
+            <FaSearch
+              size={20}
+              className={styles.navbar_search_icon}
+              onClick={() => setOpenSearchInput(!openSearchInput)}
+            />
           </div>
         </div>
       </nav>

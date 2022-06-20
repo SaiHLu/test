@@ -1,25 +1,39 @@
-import { Button, FormControl, FormErrorMessage, FormLabel, Input, VStack, Box } from '@chakra-ui/react';
-import { yupResolver } from '@hookform/resolvers/yup';
-import PageBreadcrumb from 'components/dashboard/PageBreadcrumb';
-import { verify } from 'jsonwebtoken';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useRouter } from 'next/router';
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { JWT_SECRET } from 'utils/cookie';
-import { updateCategoryValidation } from 'validations/categoryValidations';
-import { ICategory } from '..';
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  VStack,
+  Box,
+} from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import PageBreadcrumb from 'components/dashboard/PageBreadcrumb'
+import { verify } from 'jsonwebtoken'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { JWT_SECRET } from 'utils/cookie'
+import { updateCategoryValidation } from 'validations/categoryValidations'
+import { ICategory } from '..'
 
 interface IFormInputs {
-  name: string;
+  name: string
 }
 
-function EditCategory({ category }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const { handleSubmit, register, formState: { errors, isSubmitting } } = useForm<IFormInputs>({
-    resolver: yupResolver(updateCategoryValidation.fields["body"]),
+function EditCategory({
+  category,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(updateCategoryValidation.fields['body']),
     defaultValues: {
-      name: category.name
-    }
+      name: category.name,
+    },
   })
   const router = useRouter()
 
@@ -28,9 +42,9 @@ function EditCategory({ category }: InferGetServerSidePropsType<typeof getServer
       const response = await fetch(`/api/category/${category._id}/update`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       })
 
       const result = await response.json()
@@ -43,20 +57,29 @@ function EditCategory({ category }: InferGetServerSidePropsType<typeof getServer
   }
 
   return (
-    <Box width='full'>
-      <Box display='flex' justifyContent='flex-end' mb='8'>
+    <Box width="full">
+      <Box display="flex" justifyContent="flex-end" mb="8">
         <PageBreadcrumb name={['Category', 'Edit']} />
       </Box>
 
       <form onSubmit={handleSubmit(handleUpdateCategory)}>
         <VStack spacing={4}>
           <FormControl isInvalid={!!errors.name} isRequired>
-            <FormLabel htmlFor='name'>Category Name</FormLabel>
-            <Input type='text' id='name' {...register('name')} />
-            <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
+            <FormLabel htmlFor="name">Category Name</FormLabel>
+            <Input type="text" id="name" {...register('name')} />
+            <FormErrorMessage>
+              {errors.name && errors.name.message}
+            </FormErrorMessage>
           </FormControl>
 
-          <Button type='submit' w='full' colorScheme='blue' isLoading={isSubmitting}>Submit</Button>
+          <Button
+            type="submit"
+            w="full"
+            colorScheme="blue"
+            isLoading={isSubmitting}
+          >
+            Submit
+          </Button>
         </VStack>
       </form>
     </Box>
@@ -70,8 +93,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       redirect: {
         destination: '/auth/login',
-        permanent: false
-      }
+        permanent: false,
+      },
     }
   }
 
@@ -82,8 +105,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         redirect: {
           destination: '/auth/login',
-          permanent: false
-        }
+          permanent: false,
+        },
       }
     }
   }
@@ -91,7 +114,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(`${process.env.API_URL}/api/category/${id}`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
   })
 
@@ -99,10 +122,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      category
-    }
+      category,
+    },
   }
 }
 
-
-export default EditCategory;
+export default EditCategory

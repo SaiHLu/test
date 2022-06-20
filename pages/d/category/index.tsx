@@ -1,4 +1,21 @@
-import { Box, Button, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Menu, MenuButton, MenuList, MenuItem, Center, HStack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  TableContainer,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Center,
+  HStack,
+  Text,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { FaCaretDown } from 'react-icons/fa'
@@ -8,11 +25,13 @@ import { verify } from 'jsonwebtoken'
 import { JWT_SECRET } from 'utils/cookie'
 
 export interface ICategory {
-  _id: string;
-  name: string;
+  _id: string
+  name: string
 }
 
-function CategoryIndex({ categories }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function CategoryIndex({
+  categories,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter()
   const currentPage = Number(router.query.page as unknown as number) || 1
 
@@ -47,12 +66,18 @@ function CategoryIndex({ categories }: InferGetServerSidePropsType<typeof getSer
   }
 
   return (
-    <Box width='full'>
-      <Box display='flex' justifyContent='flex-start' mb='8' pl='4'>
-        <Button colorScheme='blue' size='md' onClick={() => router.push('/d/category/create')}>Create</Button>
+    <Box width="full">
+      <Box display="flex" justifyContent="flex-start" mb="8" pl="4">
+        <Button
+          colorScheme="blue"
+          size="md"
+          onClick={() => router.push('/d/category/create')}
+        >
+          Create
+        </Button>
       </Box>
       <TableContainer>
-        <Table variant='simple'>
+        <Table variant="simple">
           <Thead>
             <Tr>
               <Th>Name</Th>
@@ -72,7 +97,11 @@ function CategoryIndex({ categories }: InferGetServerSidePropsType<typeof getSer
                       <NextLink href={`/d/category/${category._id}`}>
                         <MenuItem>Edit</MenuItem>
                       </NextLink>
-                      <MenuItem onClick={() => handleDeleteCategory(category._id)}>Delete</MenuItem>
+                      <MenuItem
+                        onClick={() => handleDeleteCategory(category._id)}
+                      >
+                        Delete
+                      </MenuItem>
                     </MenuList>
                   </Menu>
                 </Td>
@@ -114,8 +143,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       redirect: {
         destination: '/auth/login',
-        permanent: false
-      }
+        permanent: false,
+      },
     }
   }
 
@@ -126,26 +155,29 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         redirect: {
           destination: '/auth/login',
-          permanent: false
-        }
+          permanent: false,
+        },
       }
     }
   }
 
-  const page = context.query.page as unknown as number || 1
-  const response = await fetch(`${process.env.API_URL}/api/category?page=${page}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
+  const page = (context.query.page as unknown as number) || 1
+  const response = await fetch(
+    `${process.env.API_URL}/api/category?page=${page}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  })
+  )
 
   const categories: ICategory[] = await response.json()
 
   return {
     props: {
-      categories
-    }
+      categories,
+    },
   }
 }
 

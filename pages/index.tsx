@@ -1,6 +1,5 @@
-import HeroSection from "components/frontend/HeroSection";
-import { NextPageWithLayout } from "./page";
-
+import HeroSection from 'components/frontend/HeroSection'
+import { NextPageWithLayout } from './page'
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -10,6 +9,6 @@ const Home: NextPageWithLayout = () => {
   )
 }
 
-Home.homeLayout = true;
+Home.homeLayout = true
 
 export default Home

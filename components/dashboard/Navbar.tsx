@@ -1,9 +1,24 @@
-import { FlexProps, Flex, useColorModeValue, IconButton, HStack, Menu, MenuButton, Avatar, VStack, Box, MenuList, MenuDivider, MenuItem, Text } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { FiMenu, FiChevronDown } from "react-icons/fi";
+import {
+  FlexProps,
+  Flex,
+  useColorModeValue,
+  IconButton,
+  HStack,
+  Menu,
+  MenuButton,
+  Avatar,
+  VStack,
+  Box,
+  MenuList,
+  MenuDivider,
+  MenuItem,
+  Text,
+} from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { FiMenu, FiChevronDown } from 'react-icons/fi'
 
 interface MobileProps extends FlexProps {
-  onOpen: () => void;
+  onOpen: () => void
 }
 
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
@@ -38,7 +53,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
       justifyContent={{ base: 'space-between', md: 'flex-end' }}
-      {...rest}>
+      {...rest}
+    >
       <IconButton
         display={{ base: 'flex', md: 'none' }}
         onClick={onOpen}
@@ -51,7 +67,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         display={{ base: 'flex', md: 'none' }}
         fontSize="2xl"
         fontFamily="monospace"
-        fontWeight="bold">
+        fontWeight="bold"
+      >
         Logo
       </Text>
 
@@ -61,7 +78,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             <MenuButton
               py={2}
               transition="all 0.3s"
-              _focus={{ boxShadow: 'none' }}>
+              _focus={{ boxShadow: 'none' }}
+            >
               <HStack>
                 <Avatar
                   size={'sm'}
@@ -73,7 +91,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   display={{ base: 'none', md: 'flex' }}
                   alignItems="flex-start"
                   spacing="1px"
-                  ml="2">
+                  ml="2"
+                >
                   <Text fontSize="sm">Justina Clark</Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
@@ -86,7 +105,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             </MenuButton>
             <MenuList
               bg={useColorModeValue('white', 'gray.900')}
-              borderColor={useColorModeValue('gray.200', 'gray.700')}>
+              borderColor={useColorModeValue('gray.200', 'gray.700')}
+            >
               <MenuDivider />
               <MenuItem onClick={handleLogout}>Sign out</MenuItem>
             </MenuList>
@@ -94,7 +114,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         </Flex>
       </HStack>
     </Flex>
-  );
-};
+  )
+}
 
 export default MobileNav

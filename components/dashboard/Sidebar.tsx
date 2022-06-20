@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from 'react'
 import {
   Box,
   CloseButton,
@@ -9,31 +9,28 @@ import {
   Text,
   useDisclosure,
   BoxProps,
-} from '@chakra-ui/react';
-import {
-  FiHome,
-  FiCompass,
-} from 'react-icons/fi';
-import { IconType } from 'react-icons';
+} from '@chakra-ui/react'
+import { FiHome, FiCompass } from 'react-icons/fi'
+import { IconType } from 'react-icons'
 import { NavItem } from 'components/dashboard/NavItem'
-import MobileNav from 'components/dashboard/Navbar';
+import MobileNav from 'components/dashboard/Navbar'
 
 interface LinkItemProps {
-  name: string;
-  icon: IconType;
-  path: string;
+  name: string
+  icon: IconType
+  path: string
 }
 const LinkItems: Array<LinkItemProps> = [
   { name: 'Blog', icon: FiHome, path: '/d' },
   { name: 'Category', icon: FiCompass, path: '/d/category' },
-];
+]
 
 export default function SidebarWithHeader({
   children,
 }: {
-  children: ReactNode;
+  children: ReactNode
 }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
       <SidebarContent
@@ -47,7 +44,8 @@ export default function SidebarWithHeader({
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
+        size="full"
+      >
         <DrawerContent>
           <SidebarContent onClose={onClose} />
         </DrawerContent>
@@ -58,24 +56,25 @@ export default function SidebarWithHeader({
         {children}
       </Box>
     </Box>
-  );
+  )
 }
 
 interface SidebarProps extends BoxProps {
-  onClose: () => void;
+  onClose: () => void
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
       transition="3s ease"
-      bg='white'
+      bg="white"
       borderRight="1px"
-      borderRightColor='gray.200'
+      borderRightColor="gray.200"
       w={{ base: 'full', md: 60 }}
       pos="fixed"
       h="full"
-      {...rest}>
+      {...rest}
+    >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           Logo
@@ -88,5 +87,5 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </NavItem>
       ))}
     </Box>
-  );
-};
+  )
+}

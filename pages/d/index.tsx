@@ -16,23 +16,25 @@ import {
   Text,
   Center,
   Avatar,
-  Tag
+  Tag,
 } from '@chakra-ui/react'
 import { FaCaretDown } from 'react-icons/fa'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 import NextLink from 'next/link'
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next/types';
-import { createBlogType } from 'validations/blogValidations';
-import { verify } from 'jsonwebtoken';
-import { JWT_SECRET } from 'utils/cookie';
-import { Verify } from 'crypto';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next/types'
+import { createBlogType } from 'validations/blogValidations'
+import { verify } from 'jsonwebtoken'
+import { JWT_SECRET } from 'utils/cookie'
+import { Verify } from 'crypto'
 
 export interface IBlog extends Omit<createBlogType, 'category'> {
   _id: string
   category: { name?: string }
 }
 
-function BlogIndex({ blogs }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function BlogIndex({
+  blogs,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter()
   const currentPage = Number(router.query.page as unknown as number) || 1
 
@@ -67,12 +69,18 @@ function BlogIndex({ blogs }: InferGetServerSidePropsType<typeof getServerSidePr
   }
 
   return (
-    <Box width='full'>
-      <Box display='flex' justifyContent='flex-start' mb='8' pl='4'>
-        <Button colorScheme='blue' size='md' onClick={() => router.push('/d/blogs/create')}>Create</Button>
+    <Box width="full">
+      <Box display="flex" justifyContent="flex-start" mb="8" pl="4">
+        <Button
+          colorScheme="blue"
+          size="md"
+          onClick={() => router.push('/d/blogs/create')}
+        >
+          Create
+        </Button>
       </Box>
       <TableContainer>
-        <Table variant='simple'>
+        <Table variant="simple">
           <Thead>
             <Tr>
               <Th>Title</Th>
@@ -83,37 +91,37 @@ function BlogIndex({ blogs }: InferGetServerSidePropsType<typeof getServerSidePr
             </Tr>
           </Thead>
           <Tbody>
-            {
-              blogs.map((blog: IBlog) => (
-                <Tr key={blog._id}>
-                  <Td>{blog.title}</Td>
-                  <Td>{blog.category?.name}</Td>
-                  <Td>
-                    <Avatar name={blog.title} src={blog.image} />
-                  </Td>
-                  <Td>
-                    {blog.tags?.split(',').map((tag, index) => (
-                      <Tag variant='solid' ml='1' key={index}>
-                        {tag}
-                      </Tag>
-                    ))}
-                  </Td>
-                  <Td>
-                    <Menu>
-                      <MenuButton as={Button} rightIcon={<FaCaretDown />}>
-                        Actions
-                      </MenuButton>
-                      <MenuList>
-                        <NextLink href={`/d/blogs/${blog._id}`}>
-                          <MenuItem>Edit</MenuItem>
-                        </NextLink>
-                        <MenuItem onClick={() => handleDeleteBlog(blog._id)}>Delete</MenuItem>
-                      </MenuList>
-                    </Menu>
-                  </Td>
-                </Tr>
-              ))
-            }
+            {blogs.map((blog: IBlog) => (
+              <Tr key={blog._id}>
+                <Td>{blog.title}</Td>
+                <Td>{blog.category?.name}</Td>
+                <Td>
+                  <Avatar name={blog.title} src={blog.image} />
+                </Td>
+                <Td>
+                  {blog.tags?.split(',').map((tag, index) => (
+                    <Tag variant="solid" ml="1" key={index}>
+                      {tag}
+                    </Tag>
+                  ))}
+                </Td>
+                <Td>
+                  <Menu>
+                    <MenuButton as={Button} rightIcon={<FaCaretDown />}>
+                      Actions
+                    </MenuButton>
+                    <MenuList>
+                      <NextLink href={`/d/blogs/${blog._id}`}>
+                        <MenuItem>Edit</MenuItem>
+                      </NextLink>
+                      <MenuItem onClick={() => handleDeleteBlog(blog._id)}>
+                        Delete
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
+                </Td>
+              </Tr>
+            ))}
           </Tbody>
         </Table>
       </TableContainer>
@@ -150,8 +158,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       redirect: {
         destination: '/auth/login',
-        permanent: false
-      }
+        permanent: false,
+      },
     }
   }
 
@@ -162,18 +170,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         redirect: {
           destination: '/auth/login',
-          permanent: false
-        }
+          permanent: false,
+        },
       }
     }
   }
 
-  const page = context.query.page as unknown as number || 1
+  const page = (context.query.page as unknown as number) || 1
 
   const response = await fetch(`${process.env.API_URL}/api/blog?page=${page}`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
   })
 
@@ -181,8 +189,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      blogs
-    }
+      blogs,
+    },
   }
 }
 

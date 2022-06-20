@@ -1,19 +1,24 @@
-import { FlexProps, Flex, Icon, Link } from "@chakra-ui/react";
-import { IconType } from "react-icons";
+import { FlexProps, Flex, Icon, Link } from '@chakra-ui/react'
+import { IconType } from 'react-icons'
 import NextLink from 'next/link'
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 
 interface NavItemProps extends FlexProps {
-  icon: IconType;
-  to: string;
-  children: React.ReactNode;
+  icon: IconType
+  to: string
+  children: React.ReactNode
 }
 
 export const NavItem = ({ icon, to, children, ...rest }: NavItemProps) => {
   const router = useRouter()
 
   return (
-    <Link as={NextLink} href={to} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <Link
+      as={NextLink}
+      href={to}
+      style={{ textDecoration: 'none' }}
+      _focus={{ boxShadow: 'none' }}
+    >
       <Flex
         align="center"
         p="4"
@@ -26,7 +31,8 @@ export const NavItem = ({ icon, to, children, ...rest }: NavItemProps) => {
           color: 'white',
         }}
         bgColor={router.pathname == to ? 'cyan.600' : ''}
-        {...rest}>
+        {...rest}
+      >
         {icon && (
           <Icon
             mr="4"
@@ -40,5 +46,5 @@ export const NavItem = ({ icon, to, children, ...rest }: NavItemProps) => {
         {children}
       </Flex>
     </Link>
-  );
-};
+  )
+}

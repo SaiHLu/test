@@ -1,25 +1,18 @@
 import React from 'react'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from '@chakra-ui/react'
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react'
 
 interface PageBreadcrumbProps {
-  name: string[];
+  name: string[]
 }
 
 const PageBreadcrumb: React.FC<PageBreadcrumbProps> = ({ name }) => {
   return (
     <Breadcrumb>
-      {
-        name.map((n, index) => (
-          <BreadcrumbItem key={index}>
-            <BreadcrumbLink href='#'>{n}</BreadcrumbLink>
-          </BreadcrumbItem>
-        )
-        )
-      }
+      {name.map((n, index) => (
+        <BreadcrumbItem key={index}>
+          <BreadcrumbLink href="#">{n}</BreadcrumbLink>
+        </BreadcrumbItem>
+      ))}
     </Breadcrumb>
   )
 }
