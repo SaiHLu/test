@@ -22,7 +22,12 @@
   border-bottom: 1px solid #ccc;
 }
 
-.categories_list > li,
+.categories_list > li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
 .recent_post_list > li {
   display: flex;
   justify-content: flex-start;
